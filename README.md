@@ -6,19 +6,88 @@ A Ruby interface to the Orchestrate.io API
 
 Add this line to your application's Gemfile:
 
-    gem 'orchestrate.io'
+```
+gem 'orchestrate.io'
+```
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install orchestrate.io
+```
+$ gem install orchestrate.io
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require 'orchestrate.io'
+require 'json'
+
+@io = OrchestrateIo.new(apikey: 'abc')
+@json_data = JSON.dump({a: 1})
+@search_query = "hello dolly"
+
+## Key/Values
+
+@io.key_values :put do
+  collection "foo"
+  key "bar"
+　timestamp 1384224213
+  data @json_data
+end
+
+@io.key_values :get do
+  collection "foo"
+  key "bar"
+end
+
+## Search
+
+@io.search do
+  collection 'foo'
+  query @query_string
+end
+
+## Events
+
+@io.events :put do
+  collection "foo"
+  key "bar"
+  type "log"
+　timestamp 1384224213
+  data @json_data
+end
+
+@io.events :get do
+  collection "foo"
+  key "bar"
+  type "log"
+　start 1384224210
+　end 1384224213
+end
+
+
+## Graph
+
+@io.graph :put do
+  collection "foo"
+  key "bar1"
+  relation "friends"
+  to_collection "hoge"
+  to_key "bar2"
+end
+
+@io.graph :get do
+  collection "foo"
+  key "bar1"
+  relation "friends"
+end
+```
 
 ## Contributing
 
