@@ -31,9 +31,11 @@ require 'json'
 @io = OrchestrateIo.new(apikey: 'abc')
 @json_data = JSON.dump({a: 1})
 @search_query = "hello dolly"
+```
 
-## Key/Values
+#### Key/Values
 
+```
 @io.key_values :put do
   collection "foo"
   key "bar"
@@ -45,16 +47,20 @@ end
   collection "foo"
   key "bar"
 end
+```
 
-## Search
+#### Search
 
+```
 @io.search do
   collection 'foo'
   query @query_string
 end
+```
 
-## Events
+#### Events
 
+```
 @io.events :put do
   collection "foo"
   key "bar"
@@ -70,10 +76,11 @@ end
 　start 1384224210
 　end 1384224213
 end
+```
 
+#### Graph
 
-## Graph
-
+```
 @io.graph :put do
   collection "foo"
   key "bar1"
