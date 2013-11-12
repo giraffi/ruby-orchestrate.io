@@ -1,6 +1,6 @@
-# Orchestrate.io
+# ruby-orchestrate.io
 
-TODO: Write a gem description
+A Ruby interface to the Orchestrate.io API
 
 ## Installation
 
