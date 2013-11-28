@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "path": {
+        "collection": "films",
+        "key": "the_godfather_part_2",
+        "ref": "dd76dd28ff14d348"
+      },
+      "value": {
+        "Title": "The Godfather: Part II",
+        "Year": 1974,
+        "Rated": "R",
+        "Released": "20 Dec 1974",
+        "Runtime": "3 h 20 min",
+        "Genre": "Crime, Drama",
+        "Director": "Francis Ford Coppola",
+        "Writer": "Francis Ford Coppola, Mario Puzo",
+        "Actors": "Al Pacino, Robert De Niro, Robert Duvall, Diane Keaton",
+        "Plot": "The early life and career of Vito Corleone in 1920s New York is portrayed while his son, Michael, expands and tightens his grip on his crime syndicate stretching from Lake Tahoe, Nevada to pre-revolution 1958 Cuba.",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BNDc2NTM3MzU1Nl5BMl5BanBnXkFtZTcwMTA5Mzg3OA@@._V1_SX300.jpg",
+        "imdbRating": 9,
+        "imdbVotes": "473,096",
+        "imdbID": "tt0071562",
+        "Type": "movie",
+        "Response": "True"
+      }
+    }
+  ],
+  "count": 1
+}

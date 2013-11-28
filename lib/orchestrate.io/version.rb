@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module OrchestrateIo
-  VERSION = "0.0.1"
+  Version = VERSION = "0.1.0"
 end
