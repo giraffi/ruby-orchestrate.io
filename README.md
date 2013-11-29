@@ -1,6 +1,6 @@
 # ruby-orchestrate.io
 
-A Ruby interface to the Orchestrate.io API
+A Ruby interface to the [Orchestrate.io](https://orchestrate.io/) API
 
 ## Installation
 
@@ -33,19 +33,19 @@ require 'json'
 @search_query = "hello dolly"
 ```
 
-#### Key/Values
+#### Key/Value
 
 ```
-@io.key_values :put do
+@io.key_value :put do
   collection "foo"
-  key "bar"
-　timestamp 1384224213
-  data @json_data
+  key        "bar"
+　timestamp   1384224213
+  data        @json_data
 end
 
 @io.key_values :get do
   collection "foo"
-  key "bar"
+  key        "bar"
 end
 ```
 
@@ -53,8 +53,8 @@ end
 
 ```
 @io.search do
-  collection 'foo'
-  query @query_string
+  collection "foo"
+  query       @query_string
 end
 ```
 
@@ -63,18 +63,18 @@ end
 ```
 @io.events :put do
   collection "foo"
-  key "bar"
-  type "log"
-　timestamp 1384224213
-  data @json_data
+  key        "bar"
+  type       "log"
+　timestamp   1384224213
+  data        @json_data
 end
 
 @io.events :get do
   collection "foo"
-  key "bar"
-  type "log"
-　start 1384224210
-　end 1384224213
+  key        "bar"
+  type       "log"
+　start       1384224210
+　end         1384224213
 end
 ```
 
@@ -82,17 +82,17 @@ end
 
 ```
 @io.graph :put do
-  collection "foo"
-  key "bar1"
-  relation "friends"
+  collection    "foo"
+  key           "bar1"
+  relation      "friends"
   to_collection "hoge"
-  to_key "bar2"
+  to_key        "bar2"
 end
 
 @io.graph :get do
   collection "foo"
-  key "bar1"
-  relation "friends"
+  key        "bar1"
+  relation   "friends"
 end
 ```
 
