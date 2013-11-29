@@ -2,6 +2,9 @@
 
 A Ruby interface to the [Orchestrate.io](https://orchestrate.io/) API
 
+[![Build
+Status](https://travis-ci.org/azukiwasher/ruby-orchestrate.io.png?branch=master)](https://travis-ci.org/azukiwasher/ruby-orchestrate.io)
+
 ## Installation
 
 Add this line to your application's Gemfile:
