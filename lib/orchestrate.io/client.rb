@@ -4,7 +4,7 @@ require 'orchestrate.io/helper'
 require 'orchestrate.io/configuration'
 require 'orchestrate.io/key_value'
 require 'orchestrate.io/search'
-require 'orchestrate.io/event'
+require 'orchestrate.io/events'
 require 'orchestrate.io/graph'
 
 module OrchestrateIo
