@@ -5,29 +5,29 @@ class PseudoOrchestrateIo < Sinatra::Base
 
   # == KeyValue
 
-  # PUT /v0/:collection/:key
-  put "/v0/:collection/:key" do
+  # PUT /:version/:collection/:key
+  put "/:version/:collection/:key" do
     json_response 201
   end
 
-  # GET /v0/:collection/:key
-  get "/v0/:collection/:key" do
+  # GET /:version/:collection/:key
+  get "/:version/:collection/:key" do
     json_response 200, "get_values_by_key.json"
   end
 
-  # DELETE /v0/:collection/:key
-  delete "/v0/:collection/:key" do
+  # DELETE /:version/:collection/:key
+  delete "/:version/:collection/:key" do
     json_response 204
   end
 
   # == Search
 
-  # GET /v0/:collection
-  get "/v0/:collection" do
+  # GET /:version/:collection
+  get "/:version/:collection" do
     json_response 200, "search_collection.json"
   end
 
-  # == Event
+  # == Events
 
   # PUT /:version/:collection/:key/events/:type
   put "/:version/:collection/:key/events/:type" do
@@ -41,13 +41,13 @@ class PseudoOrchestrateIo < Sinatra::Base
 
   # == Graph
 
-  # PUT /v0/:collection/:key/relations/:relation
-  put "/v0/:collection/:key/relations/:relation/:to_collection/:to_key" do
+  # PUT /:version/:collection/:key/relations/:relation
+  put "/:version/:collection/:key/relations/:relation/:to_collection/:to_key" do
     json_response 201
   end
 
-  # GET /v0/:collection/:key/relations/:relation
-  get "/v0/:collection/:key/relations/:relation" do
+  # GET /:version/:collection/:key/relations/:relation
+  get "/:version/:collection/:key/relations/:relation" do
     json_response 200, "get_graph.json"
   end
 
