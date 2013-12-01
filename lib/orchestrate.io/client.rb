@@ -6,6 +6,7 @@ require 'orchestrate.io/key_value'
 require 'orchestrate.io/search'
 require 'orchestrate.io/events'
 require 'orchestrate.io/graph'
+require 'orchestrate.io/request'
 
 module OrchestrateIo
   class Client
