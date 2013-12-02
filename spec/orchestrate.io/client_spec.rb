@@ -28,7 +28,7 @@ describe OrchestrateIo::Client do
       OrchestrateIo::Client.should_receive(:format).with(:json)
       OrchestrateIo::Client.should_receive(:base_uri).with(default_options[:endpoint])
       OrchestrateIo::Client.should_receive(:headers).with(default_options[:request_headers])
-      OrchestrateIo.new(apikey: 'abc')
+      OrchestrateIo.new(api_key: 'abc')
     end
 
     it 'sets logger level to debug' do
