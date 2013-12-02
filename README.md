@@ -31,7 +31,7 @@ $ gem install orchestrate.io
 require 'orchestrate.io'
 require 'json'
 
-@io = OrchestrateIo.new(apikey: 'abc')
+@io = OrchestrateIo.new(api_key: 'abc')
 @json_data = JSON.dump({a: 1})
 @search_query = "hello dolly"
 ```
