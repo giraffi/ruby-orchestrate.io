@@ -46,7 +46,7 @@ require 'json'
   data        @json_data
 end
 
-@io.key_values :get do
+@io.key_value :get do
   collection "foo"
   key        "bar"
 end
