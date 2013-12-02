@@ -3,29 +3,35 @@
 module OrchestrateIo
   class Request
     attr_reader :client, :version, :http_method
-    attr_accessor :uri_seeds, :opts_seeds
 
-    def initialize(client, http_method, uri_seeds, opts_seeds, &block)
-      @client      = client
+    def initialize(args, &block)
+      @client      = args[:client]
+      @http_method = args[:http_method]
+      @uri         = args[:uri]
+      @options     = args[:options]
       @version     = client.version
-      @http_method = http_method
-      @uri_seeds   = uri_seeds
-      @opts_seeds  = opts_seeds
 
       instance_eval &block if block_given?
    end
 
-    def perform_request
-      client.request(http_method, uri, options)
+    def perform
+      client.request(http_method, uri, parse_options(@options))
     end
-    alias :perform :perform_request
 
     def uri
-      "/" + version + "/" + uri_seeds.map{|seed| instance_variable_get("@#{seed}")}.join("/")
+      @uri.split(/\//).map {|str|
+        str =~ /^:/ ? instance_variable_get("@" + str.gsub!(/:/,'')) : str
+      }.join("/")
     end
 
-    def options
-      opts_seeds.each {|k,v| opts_seeds[k] = instance_variable_get("@#{v}") }
+    def parse_options(options)
+      options.each {|k,v|
+        if v.is_a? Hash
+          parse_options(v)
+        else
+          options[k] = instance_variable_get("@#{v}")
+        end
+      }
     end
 
     def method_missing(method, *args, &block)
