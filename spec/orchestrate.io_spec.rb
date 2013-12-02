@@ -16,7 +16,7 @@ describe OrchestrateIo do
 
   describe '::new' do
     it 'creates a new client' do
-      expect(OrchestrateIo.new(apikey: 'abc')).to be_an_instance_of OrchestrateIo::Client
+      expect(OrchestrateIo.new(api_key: 'abc')).to be_an_instance_of OrchestrateIo::Client
     end
   end
 
