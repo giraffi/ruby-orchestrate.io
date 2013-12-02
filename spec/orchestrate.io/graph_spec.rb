@@ -2,9 +2,9 @@
 require 'spec_helper'
 
 describe OrchestrateIo::Graph do
-  let(:client) { OrchestrateIo::Client.new(apikey: 'abc') }
+  let(:client) { OrchestrateIo::Client.new(api_key: 'abc') }
 
-  describe "PUT /:version/:collection/:key/realtions/:relation/:to_collection/:to_key" do
+  describe "PUT /:version/:collection/:key/relations/:relation/:to_collection/:to_key" do
     it "creates a relationship between two objects" do
       request = client.graph :put do
         collection    "films"
@@ -18,7 +18,7 @@ describe OrchestrateIo::Graph do
     end
   end
 
-  describe "GET /:version/:collection/:key" do
+  describe "GET /:version/:collection/:key/relations/:relation" do
     it "returns relation’s collection, key, ref and values" do
       request = client.graph :get do
         collection    "films"
