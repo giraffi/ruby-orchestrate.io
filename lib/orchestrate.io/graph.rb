@@ -1,12 +1,9 @@
 # encoding: utf-8
-require 'orchestrate.io/client'
-require 'forwardable'
 
 module OrchestrateIo
   class Graph
-    extend Forwardable
 
-    attr_reader :client, :version, :http_method
+    attr_reader :request, :http_method
 
     # == Usage
     #
@@ -20,39 +17,30 @@ module OrchestrateIo
     # request.perform
     # => HTTParty::Response
     #
-    def initialize(client, http_method, &block)
-      @client      = client
-      @version     = client.version
-      @http_method = http_method
+    def initialize(client, method, &block)
+      @http_method = method
+      args = {
+        client: client,
+        http_method: method,
+        uri: uri,
+        options: options
+      }
 
-      self.instance_eval &block if block_given?
+      @request = OrchestrateIo::Request.new(args, &block)
     end
 
-    def_delegator :@client, :request
-
-    def method_missing(method, *args, &block)
-      args = args.first
-      self.class.class_eval do
-        define_method method do |value|
-          instance_variable_set("@#{method}", value)
-        end
-      end
-      self.__send__(method, args)
+    def perform
+      request.perform
     end
-
-    def perform_request
-      request(http_method, uri, options)
-    end
-    alias :perform :perform_request
 
   protected
 
     def uri
       case http_method
       when :get
-        "/#{version}/#{@collection}/#{@key}/relations/#{@relation}"
+        "/:version/:collection/:key/relations/:relation"
       when :put
-        "/#{version}/#{@collection}/#{i@key}/relations/#{@relation}/#{@to_collection}/#{@to_key}"
+        "/:version/:collection/:key/relations/:relation/:to_collection/:to_key"
       end
     end
 
