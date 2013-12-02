@@ -44,12 +44,12 @@ require 'json'
   key        "bar"
 　timestamp   1384224213
   data        @json_data
-end
+end.perform
 
 @io.key_value :get do
   collection "foo"
   key        "bar"
-end
+end.perform
 ```
 
 #### Search
@@ -58,7 +58,7 @@ end
 @io.search do
   collection "foo"
   query       @query_string
-end
+end.perform
 ```
 
 #### Events
@@ -70,7 +70,7 @@ end
   type       "log"
 　timestamp   1384224213
   data        @json_data
-end
+end.perform
 
 @io.events :get do
   collection "foo"
@@ -78,7 +78,7 @@ end
   type       "log"
 　start       1384224210
 　end         1384224213
-end
+end.perform
 ```
 
 #### Graph
@@ -90,13 +90,13 @@ end
   relation      "friends"
   to_collection "hoge"
   to_key        "bar2"
-end
+end.perform
 
 @io.graph :get do
   collection "foo"
   key        "bar1"
   relation   "friends"
-end
+end.perform
 ```
 
 ## Contributing
