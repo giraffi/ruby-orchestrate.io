@@ -3,9 +3,8 @@ require 'spec_helper'
 describe OrchestrateIo::Request do
   class Client
     def version ; "v0" ; end
-
     def request(http_method, uri, options={})
-      "#{http_method} #{uri} with #{options}"
+      200
     end
   end
 
@@ -13,14 +12,20 @@ describe OrchestrateIo::Request do
     attr_reader :request
 
     def initialize(method, &block)
-      @request = OrchestrateIo::Request.new(Client.new, method, uri_seeds, opts_seeds, &block)
+      args = {
+        client: Client.new,
+        http_method: method,
+        uri: uri,
+        options: options
+      }
+      @request = OrchestrateIo::Request.new(args, &block)
     end
 
-    def uri_seeds
-      %w{ collection key }
+    def uri
+      "/:version/:collection/:key"
     end
 
-    def opts_seeds
+    def options
       options = {}
       options[:body] = :data
       options
@@ -37,16 +42,17 @@ describe OrchestrateIo::Request do
 
   describe "::new" do
     it "initializes the attributesi to build the uri" do
-      expect(dummy.request.version).to eql "v0"
-      expect(dummy.request.instance_variable_get("@collection")).to eql "films"
-      expect(dummy.request.instance_variable_get("@key")).to eql "the_godfather"
-      expect(dummy.request.instance_variable_get("@data")).to eql "{\"Title\": \"The Godfather\"}"
+      expect(dummy.request.version).to eql 'v0'
+      expect(dummy.request.instance_variable_get("@collection")).to eql 'films'
+      expect(dummy.request.instance_variable_get("@key")).to eql 'the_godfather'
+      expect(dummy.request.instance_variable_get("@data")).to eql '{"Title": "The Godfather"}'
     end
   end
 
   describe "#perform_request" do
-    it "invokes the request method at Client class" do
-      expect(dummy.request.perform).to eql ''
+    it "invokes the request method in Client class" do
+      Client.any_instance.should_receive(:request).with(:get, '/v0/films/the_godfather', {:body=>'{"Title": "The Godfather"}'}).and_return(200)
+      dummy.request.perform
     end
   end
 end
