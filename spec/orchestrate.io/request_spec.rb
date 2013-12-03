@@ -3,56 +3,50 @@ require 'spec_helper'
 describe OrchestrateIo::Request do
   class Client
     def version ; "v0" ; end
-    def request(http_method, uri, options={})
-      200
-    end
+    def request(http_method, uri, options={}) ; 200 ; end
   end
 
-  class DummyClass
-    attr_reader :request
-
-    def initialize(method, &block)
+  let(:request){
+    OrchestrateIo::Request.new(
       args = {
-        client: Client.new,
-        http_method: method,
-        uri: uri,
-        options: options
+        client:      Client.new,
+        http_method: :get,
+        uri:         "/:version/:collection/:key",
+        options:     Hash[:body, :data]
       }
-      @request = OrchestrateIo::Request.new(args, &block)
+    ) do
+      collection "films"
+      key        "the_godfather"
+      data       "{\"Title\": \"The Godfather\"}"
     end
-
-    def uri
-      "/:version/:collection/:key"
-    end
-
-    def options
-      options = {}
-      options[:body] = :data
-      options
-    end
-  end
-
-  let(:dummy) {
-    DummyClass.new(:get) {
-      collection 'films'
-      key        'the_godfather'
-      data       '{"Title": "The Godfather"}'
-    }
   }
 
-  describe "::new" do
-    it "initializes the attributesi to build the uri" do
-      expect(dummy.request.version).to eql 'v0'
-      expect(dummy.request.instance_variable_get("@collection")).to eql 'films'
-      expect(dummy.request.instance_variable_get("@key")).to eql 'the_godfather'
-      expect(dummy.request.instance_variable_get("@data")).to eql '{"Title": "The Godfather"}'
+  describe "#uri" do
+    it "returns a request uri" do
+      expect(request.uri).to eql "/v0/films/the_godfather"
     end
   end
 
-  describe "#perform_request" do
-    it "invokes the request method in Client class" do
-      Client.any_instance.should_receive(:request).with(:get, '/v0/films/the_godfather', {:body=>'{"Title": "The Godfather"}'}).and_return(200)
-      dummy.request.perform
+  describe "#parse_options" do
+    context "simple options" do
+      it "returns a request data" do
+        options = Hash[:body, :data]
+        expect(request.parse_options(options)).to eql Hash({:body=>"{\"Title\": \"The Godfather\"}"})
+      end
+    end
+
+    context "nested options" do
+      it "returns a request data" do
+        options = Hash({ query: { query: :data }})
+        expect(request.parse_options(options)).to eql Hash({:query=>{:query=>"{\"Title\": \"The Godfather\"}"}})
+      end
+    end
+  end
+
+  describe "#perform" do
+    it "perform a request to the uri with the options" do
+      Client.any_instance.should_receive(:request).with(:get, "/v0/films/the_godfather", {:body=>"{\"Title\": \"The Godfather\"}"}).and_return(200)
+      expect(request.perform). to eql 200
     end
   end
 end

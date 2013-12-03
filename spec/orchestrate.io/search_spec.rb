@@ -3,20 +3,23 @@ require 'spec_helper'
 
 describe OrchestrateIo::Search do
   let(:client){ OrchestrateIo::Client.new(api_key: 'abc') }
+  let(:request){
+    client.search :get do
+      collection  "films"
+      query       "Genre:crime"
+    end
+  }
 
   describe "GET /:version/:collection" do
-    it "returns a list of collection" do
-      request_query = 'Genre:crime'
+    it "performs a request with the correct options" do
+      client.should_receive(:request).with(:get, "/v0/films", {:query=>{:query=>"Genre:crime"}})
+      request.perform
+    end
 
-      request = client.search :get do
-        collection  "films"
-        query        request_query
-      end
+    it "returns http ok with body" do
       response = request.perform
-
       expect(response.code).to eql 200
-      body = load_json(response.body)["results"].first["value"]
-      expect(body["Genre"]).to eql "Crime, Drama"
+      expect(response.parsed_response["results"].first["value"]["Genre"]).to eql "Crime, Drama"
     end
   end
 end
