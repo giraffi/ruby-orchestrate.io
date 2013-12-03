@@ -40,7 +40,7 @@ module OrchestrateIo
     # Set the username of basic auth to the API Key attribute.
     #
     def request(http_method, uri, options={})
-      response = self.class.__send__(http_method, uri, options.merge!(basic_auth))
+      response = self.class.__send__(http_method, uri, options.merge(basic_auth))
       # Add some logger.debug here ...
       response
     end
