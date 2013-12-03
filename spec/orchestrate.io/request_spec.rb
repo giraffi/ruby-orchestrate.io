@@ -31,14 +31,16 @@ describe OrchestrateIo::Request do
     context "simple options" do
       it "returns a request data" do
         options = Hash[:body, :data]
-        expect(request.parse_options(options)).to eql Hash({:body=>"{\"Title\": \"The Godfather\"}"})
+        result = {:body=>"{\"Title\": \"The Godfather\"}"}
+        expect(request.parse_options(options)).to eql result
       end
     end
 
     context "nested options" do
       it "returns a request data" do
         options = Hash({ query: { query: :data }})
-        expect(request.parse_options(options)).to eql Hash({:query=>{:query=>"{\"Title\": \"The Godfather\"}"}})
+        result = {:query=>{:query=>"{\"Title\": \"The Godfather\"}"}}
+        expect(request.parse_options(options)).to eql result
       end
     end
   end
