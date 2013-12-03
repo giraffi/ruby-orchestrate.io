@@ -29,7 +29,11 @@ module OrchestrateIo
         if v.is_a? Hash
           parse_options(v)
         else
-          options[k] = instance_variable_get("@#{v}")
+          if value = instance_variable_get("@#{v}")
+            options[k] = value
+          else
+            options.delete(k)
+          end
         end
       }
     end
