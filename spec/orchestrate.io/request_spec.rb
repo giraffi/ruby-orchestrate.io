@@ -38,7 +38,7 @@ describe OrchestrateIo::Request do
 
     context "nested options" do
       it "returns a request data" do
-        options = Hash({ query: { query: :data }})
+        options = {query:{query: :data}}
         result = {:query=>{:query=>"{\"Title\": \"The Godfather\"}"}}
         expect(request.parse_options(options)).to eql result
       end
