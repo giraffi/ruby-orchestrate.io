@@ -27,14 +27,12 @@ require 'json'
 require 'timecop'
 require "codeclimate-test-reporter"
 
-WebMock.disable_net_connect!(:allow => /codeclimate.com\/test_reports/)
+# Keep the client from external requests.
+WebMock.disable_net_connect!(allow_localhost: true, allow: /codeclimate.com/)
 CodeClimate::TestReporter.start
 
 # Use Webmock to route all requests to our Sinatra application `PseudoOrchestrateIo`.
 require_relative 'support/pseudo_orchestrate.io'
-
-# Keep the client from external requests.
-WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
