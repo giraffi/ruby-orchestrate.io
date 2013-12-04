@@ -4,6 +4,7 @@ A Ruby interface to the [Orchestrate.io](https://orchestrate.io/) API
 
 [![Gem Version](https://badge.fury.io/rb/orchestrate.io.png)](https://rubygems.org/gems/orchestrate.io)
 [![Build Status](https://travis-ci.org/azukiwasher/ruby-orchestrate.io.png?branch=master)](https://travis-ci.org/azukiwasher/ruby-orchestrate.io)
+[![Code Climate](https://codeclimate.com/repos/529e807189af7e6a3400abff/badges/57dc03031430402a1d74/gpa.png)](https://codeclimate.com/repos/529e807189af7e6a3400abff/feed)
 
 ## Installation
 
