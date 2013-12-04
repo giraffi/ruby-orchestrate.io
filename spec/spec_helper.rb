@@ -8,9 +8,6 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 # Connect code quality with test coverage
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 unless ENV['CI']
   require 'simplecov'
   require 'simplecov-rcov'
@@ -28,6 +25,10 @@ require 'rspec'
 require 'webmock/rspec'
 require 'json'
 require 'timecop'
+require "codeclimate-test-reporter"
+
+WebMock.disable_net_connect!(:allow => /codeclimate.com\/test_reports/)
+CodeClimate::TestReporter.start
 
 # Use Webmock to route all requests to our Sinatra application `PseudoOrchestrateIo`.
 require_relative 'support/pseudo_orchestrate.io'
