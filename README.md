@@ -43,7 +43,6 @@ require 'json'
 @io.key_value :put do
   collection "foo"
   key        "bar"
-　timestamp   1384224213
   data        @json_data
 end.perform
 
