@@ -55,7 +55,7 @@ end.perform
 #### Search
 
 ```
-@io.search do
+@io.search :get do
   collection "foo"
   query       @query_string
 end.perform
