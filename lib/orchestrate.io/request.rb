@@ -36,6 +36,7 @@ module OrchestrateIo
           end
         end
       }
+      options.delete_if {|k,v| v.empty? if v.is_a? Hash }
     end
 
     def method_missing(method, *args, &block)
