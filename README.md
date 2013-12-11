@@ -68,16 +68,16 @@ end.perform
   collection "foo"
   key        "bar"
   type       "log"
-　timestamp   1384224213
   data        @json_data
+　timestamp   1384224213
 end.perform
 
 @io.events :get do
   collection "foo"
   key        "bar"
   type       "log"
-　start       1384224210
-　end         1384224213
+　from        1384224210
+　to          1384224213
 end.perform
 ```
 
