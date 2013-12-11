@@ -41,6 +41,7 @@ module OrchestrateIo
     def options
       options = {}
       options[:body] = :data
+      options[:query] = { timestamp: :timestamp, start: :from, end: :to }
       options
     end
   end

@@ -11,12 +11,13 @@ describe OrchestrateIo::Events do
         key        "the_godfather"
         type       "comments"
         data       "{\"Text\" :\"It's hard to find a moment in the film that isn't great.\"}"
+        timestamp   1386719809
       end
     }
 
     it "performs a request with the correct options" do
       client.should_receive(:request).
-        with(:put, "/v0/films/the_godfather/events/comments", {:body=>"{\"Text\" :\"It's hard to find a moment in the film that isn't great.\"}"})
+        with(:put, "/v0/films/the_godfather/events/comments", {:body=>"{\"Text\" :\"It's hard to find a moment in the film that isn't great.\"}",:query=>{:timestamp=>1386719809}}, )
       request.perform
     end
 
@@ -33,12 +34,14 @@ describe OrchestrateIo::Events do
         collection  "films"
         key         "the_godfather"
         type        "comments"
+        from         1386719809  # start
+        to           1386723374  # end
       end
     }
 
     it "performs a request with the correct options" do
       client.should_receive(:request).
-        with(:get, "/v0/films/the_godfather/events/comments", {})
+        with(:get, "/v0/films/the_godfather/events/comments", {:query=>{:start=>1386719809, :end=>1386723374}})
       request.perform
     end
 
