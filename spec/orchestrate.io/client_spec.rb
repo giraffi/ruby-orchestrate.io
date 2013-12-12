@@ -43,7 +43,11 @@ describe OrchestrateIo::Client do
   end
 
   describe "#request" do
-    pending "TODO: A lesson for Fujiwara san"
+    it 'receives get method with correct options' do
+      OrchestrateIo::Client.should_receive(:get).with('/v0/films/the_godfather', {basic_auth: { username: "abc", password: "" } })
+      client = OrchestrateIo.new(api_key: 'abc')
+      client.request(:get, '/v0/films/the_godfather')
+    end
   end
 
   describe "#method_missing" do
