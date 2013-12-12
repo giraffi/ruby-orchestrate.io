@@ -28,6 +28,8 @@ $ gem install orchestrate.io
 
 ## Usage
 
+Initializes the OrchestrateIo class with your API key to create a new object that you perform the following API calls with.
+
 ```
 require 'orchestrate.io'
 require 'json'
