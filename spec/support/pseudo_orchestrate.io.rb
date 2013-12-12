@@ -3,6 +3,13 @@ require 'sinatra/base'
 
 class PseudoOrchestrateIo < Sinatra::Base
 
+  # == Collection
+
+  # DELETE /:version/:collection
+  delete "/:version/:collection" do
+    json_response 204
+  end
+
   # == KeyValue
 
   # PUT /:version/:collection/:key

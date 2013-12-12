@@ -2,6 +2,7 @@
 require 'httparty'
 require 'orchestrate.io/helper'
 require 'orchestrate.io/configuration'
+require 'orchestrate.io/collection'
 require 'orchestrate.io/key_value'
 require 'orchestrate.io/search'
 require 'orchestrate.io/events'
