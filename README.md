@@ -37,7 +37,33 @@ require 'json'
 @search_query = "hello dolly"
 ```
 
+#### Collection
+
+Deletes an entire collection.
+
+> under development
+
+```
+@io.collection :delete do
+  collection "foo"
+  force       true
+end.perform
+```
+
 #### Key/Value
+
+Gets the latest value assigned to a key.
+
+```
+@io.key_value :get do
+  collection "foo"
+  key        "bar"
+end.perform
+```
+
+Creates or updates the value at the collection/key specified.
+
+`NOTE`: You can create a new collection by performing a Key/Value PUT to the collection.
 
 ```
 @io.key_value :put do
@@ -45,14 +71,20 @@ require 'json'
   key        "bar"
   data        @json_data
 end.perform
+```
 
-@io.key_value :get do
+Sets the value of a key to a null object.
+
+```
+@io.key_value :delete do
   collection "foo"
   key        "bar"
 end.perform
 ```
 
 #### Search
+
+Returns list of items matching the lucene query.
 
 ```
 @io.search :get do
@@ -63,15 +95,9 @@ end.perform
 
 #### Events
 
-```
-@io.events :put do
-  collection "foo"
-  key        "bar"
-  type       "log"
-  data        @json_data
-　timestamp   1384224213
-end.perform
+Returns a list of events, optionally limited to specified time range in reverse chronological order.
 
+```
 @io.events :get do
   collection "foo"
   key        "bar"
@@ -81,7 +107,31 @@ end.perform
 end.perform
 ```
 
+Puts an event with an optional user defined timestamp.
+
+```
+@io.events :put do
+  collection "foo"
+  key        "bar"
+  type       "log"
+  data        @json_data
+　timestamp   1384224213
+end.perform
+```
+
 #### Graph
+
+Returns relation’s collection, key, ref, and values.
+
+```
+@io.graph :get do
+  collection "foo"
+  key        "bar1"
+  relation   "friends"
+end.perform
+```
+
+Creates a relationship between two objects. Relations can span collections.
 
 ```
 @io.graph :put do
@@ -90,12 +140,6 @@ end.perform
   relation      "friends"
   to_collection "hoge"
   to_key        "bar2"
-end.perform
-
-@io.graph :get do
-  collection "foo"
-  key        "bar1"
-  relation   "friends"
 end.perform
 ```
 
