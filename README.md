@@ -37,8 +37,9 @@ require 'json'
 @search_query = "hello dolly"
 ```
 
-#### Collection
+### Collection
 
+##### DELETE
 Deletes an entire collection.
 
 > under development
@@ -50,8 +51,9 @@ Deletes an entire collection.
 end.perform
 ```
 
-#### Key/Value
+### Key/Value
 
+##### GET
 Gets the latest value assigned to a key.
 
 ```
@@ -61,6 +63,7 @@ Gets the latest value assigned to a key.
 end.perform
 ```
 
+##### PUT
 Creates or updates the value at the collection/key specified.
 
 `NOTE`: You can create a new collection by performing a Key/Value PUT to the collection.
@@ -73,6 +76,7 @@ Creates or updates the value at the collection/key specified.
 end.perform
 ```
 
+##### DELETE
 Sets the value of a key to a null object.
 
 ```
@@ -82,7 +86,7 @@ Sets the value of a key to a null object.
 end.perform
 ```
 
-#### Search
+### Search
 
 Returns list of items matching the lucene query.
 
@@ -93,8 +97,9 @@ Returns list of items matching the lucene query.
 end.perform
 ```
 
-#### Events
+### Events
 
+##### GET
 Returns a list of events, optionally limited to specified time range in reverse chronological order.
 
 ```
@@ -107,6 +112,7 @@ Returns a list of events, optionally limited to specified time range in reverse 
 end.perform
 ```
 
+##### PUT
 Puts an event with an optional user defined timestamp.
 
 ```
@@ -119,8 +125,9 @@ Puts an event with an optional user defined timestamp.
 end.perform
 ```
 
-#### Graph
+### Graph
 
+##### GET
 Returns relation’s collection, key, ref, and values.
 
 ```
@@ -131,6 +138,7 @@ Returns relation’s collection, key, ref, and values.
 end.perform
 ```
 
+##### PUT
 Creates a relationship between two objects. Relations can span collections.
 
 ```
