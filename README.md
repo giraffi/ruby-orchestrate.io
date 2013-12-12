@@ -44,8 +44,6 @@ require 'json'
 ##### DELETE
 Deletes an entire collection.
 
-> under development
-
 ```
 @io.collection :delete do
   collection "foo"
