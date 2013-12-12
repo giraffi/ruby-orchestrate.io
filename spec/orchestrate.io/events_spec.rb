@@ -1,12 +1,12 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe OrchestrateIo::Events do
+describe OrchestrateIo::Event do
   let(:client) { OrchestrateIo.new(api_key: 'abc') }
 
   describe "PUT /:version/:collection/:key/events/:type" do
     let(:request) {
-      client.events :put do
+      client.event :put do
         collection "films"
         key        "the_godfather"
         type       "comments"
@@ -30,7 +30,7 @@ describe OrchestrateIo::Events do
 
   describe "GET /:version/:collection/:key/events/:type" do
     let(:request) {
-      client.events :get do
+      client.event :get do
         collection  "films"
         key         "the_godfather"
         type        "comments"

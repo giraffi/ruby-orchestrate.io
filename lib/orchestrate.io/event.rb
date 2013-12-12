@@ -1,14 +1,14 @@
 # encoding: utf-8
 
 module OrchestrateIo
-  class Events
+  class Event
 
     attr_reader :request
 
     # == Usage
     #
     # io = OrchestrateIo.new(api_key: "abc")
-    # request = io.events :get do
+    # request = io.event :get do
     #   collection  'films'
     #   key         'the_godfather'
     #   type        'comments'

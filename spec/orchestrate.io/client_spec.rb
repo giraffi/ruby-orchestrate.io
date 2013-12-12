@@ -74,16 +74,16 @@ describe OrchestrateIo::Client do
       end
     end
 
-    context '#events' do
+    context '#event' do
       it 'creates a new event instance' do
         request_data = '{ "User": "peter_bradshaw", "Text": "A measured, deathly serious epic." }'
         expect(
-          client.events(:get){
+          client.event(:get){
             collection  "films"
             key         "the_godfather"
             type        "comments"
           }
-        ).to be_an_instance_of OrchestrateIo::Events
+        ).to be_an_instance_of OrchestrateIo::Event
       end
     end
 

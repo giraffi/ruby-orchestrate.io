@@ -39,7 +39,7 @@ require 'json'
 @search_query = "hello dolly"
 ```
 
-### Collection
+### Collections
 
 ##### DELETE
 Deletes an entire collection.
@@ -105,7 +105,7 @@ end.perform
 Returns a list of events, optionally limited to specified time range in reverse chronological order.
 
 ```
-@io.events :get do
+@io.event :get do
   collection "foo"
   key        "bar"
   type       "log"
@@ -118,7 +118,7 @@ end.perform
 Puts an event with an optional user defined timestamp.
 
 ```
-@io.events :put do
+@io.event :put do
   collection "foo"
   key        "bar"
   type       "log"

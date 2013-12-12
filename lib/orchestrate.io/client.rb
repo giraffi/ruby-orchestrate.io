@@ -5,7 +5,7 @@ require 'orchestrate.io/configuration'
 require 'orchestrate.io/collection'
 require 'orchestrate.io/key_value'
 require 'orchestrate.io/search'
-require 'orchestrate.io/events'
+require 'orchestrate.io/event'
 require 'orchestrate.io/graph'
 require 'orchestrate.io/request'
 
