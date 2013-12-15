@@ -41,6 +41,8 @@ require 'json'
 
 ### Collections
 
+`NOTE`: You can create a new collection by performing a Key/Value PUT to the collection.
+
 ##### DELETE
 Deletes an entire collection.
 
@@ -65,8 +67,6 @@ end.perform
 
 ##### PUT
 Creates or updates the value at the collection/key specified.
-
-`NOTE`: You can create a new collection by performing a Key/Value PUT to the collection.
 
 ```
 @io.key_value :put do
