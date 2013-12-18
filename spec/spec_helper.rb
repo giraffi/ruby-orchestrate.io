@@ -8,9 +8,16 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 # Connect code quality with test coverage
+
+
 unless ENV['CI']
   require 'simplecov'
   require 'simplecov-rcov'
+
+  if ENV['CIRCLE_ARTIFACTS']
+    dir = File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
+    SimpleCov.coverage_dir(dir)
+  end
 
   SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
   SimpleCov.start do
@@ -19,6 +26,7 @@ unless ENV['CI']
     add_filter 'features'
   end
 end
+
 
 require 'orchestrate.io'
 require 'rspec'
