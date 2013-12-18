@@ -9,8 +9,7 @@
 
 # Connect code quality with test coverage
 
-
-unless ENV['CI']
+unless ENV['TRAVIS']
   require 'simplecov'
   require 'simplecov-rcov'
 
@@ -27,17 +26,14 @@ unless ENV['CI']
   end
 end
 
-
 require 'orchestrate.io'
 require 'rspec'
 require 'webmock/rspec'
 require 'json'
 require 'timecop'
-require "codeclimate-test-reporter"
 
 # Keep the client from external requests.
 WebMock.disable_net_connect!(allow_localhost: true, allow: /codeclimate.com/)
-CodeClimate::TestReporter.start
 
 # Use Webmock to route all requests to our Sinatra application `PseudoOrchestrateIo`.
 require_relative 'support/pseudo_orchestrate.io'
