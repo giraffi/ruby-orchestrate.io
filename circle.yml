@@ -3,4 +3,4 @@ dependencies:
     - sh ./ci/circleci/ruby_version.sh
 test:
   override:
-    - bundle exec rspec: {parallel: true}
+    - ruby -v ; bundle exec rspec: {parallel: true}
