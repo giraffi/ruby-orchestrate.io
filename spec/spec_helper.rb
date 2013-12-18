@@ -13,11 +13,6 @@ unless ENV['TRAVIS']
   require 'simplecov'
   require 'simplecov-rcov'
 
-  if ENV['CIRCLE_ARTIFACTS']
-    dir = File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
-    SimpleCov.coverage_dir(dir)
-  end
-
   SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
   SimpleCov.start do
     add_filter 'spec'
