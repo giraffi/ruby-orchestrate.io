@@ -3,7 +3,7 @@
 A Ruby interface to the [Orchestrate.io](https://orchestrate.io/) API
 
 [![Gem Version](https://badge.fury.io/rb/orchestrate.io.png)](https://rubygems.org/gems/orchestrate.io)
-[![Build Status](https://travis-ci.org/azukiwasher/ruby-orchestrate.io.png?branch=master)](https://travis-ci.org/azukiwasher/ruby-orchestrate.io)
+[![Build Status](https://travis-ci.org/giraffi/ruby-orchestrate.io.png?branch=master)](https://travis-ci.org/giraffi/ruby-orchestrate.io)
 
 ## Installation
 
