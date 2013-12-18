@@ -14,7 +14,6 @@ unless ENV['TRAVIS']
   require 'simplecov-rcov'
 
   if ENV['CIRCLE_ARTIFACTS']
-    puts RbConfig::CONFIG['RUBY_PROGRAM_VERSION']
     require 'simplecov'
     dir = File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
     SimpleCov.coverage_dir(dir)
