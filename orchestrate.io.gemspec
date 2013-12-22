@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["azukiwasher@higanworks.com"]
   spec.description   = %q{A Ruby wrapper for the Orchestrate.io API}
   spec.summary       = %q{A Ruby wrapper for the Orchestrate.io API.}
-  spec.homepage      = "https://github.com/azukiwasher/ruby-orchestrate.io"
+  spec.homepage      = "https://github.com/giraffi/ruby-orchestrate.io"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
