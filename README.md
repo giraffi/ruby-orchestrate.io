@@ -5,6 +5,7 @@ A Ruby interface to the [Orchestrate.io](https://orchestrate.io/) API
 [![Gem Version](https://badge.fury.io/rb/orchestrate.io.png)](https://rubygems.org/gems/orchestrate.io)
 [![Build Status](https://travis-ci.org/giraffi/ruby-orchestrate.io.png?branch=master)](https://travis-ci.org/giraffi/ruby-orchestrate.io)
 
+[![CircleCI Status](https://circleci.com/gh/giraffi/ruby-orchestrate.io/tree/master.png?circle-token=f6bc8c6f0610f44abe0a5db8e6e95f86f1cb874c)](https://circleci.com/gh/giraffi/ruby-orchestrate.io)
 ## Installation
 
 Add this line to your application's Gemfile:
