@@ -1,12 +1,9 @@
 language: ruby
 rvm:
+  - 2.1.0
   - 2.0.0
   - 1.9.3
 
 branches:
   only:
     - master
-
-addons:
-  code_climate:
-    repo_token: 4c822723535747ce3f984b634061775b98ed8cc49dc4537cf1a9e52149502657
