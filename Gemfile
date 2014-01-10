@@ -7,7 +7,7 @@ group :test do
   gem 'rspec', '>= 2.14'
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
-  gem 'webmock'
+  gem 'webmock', '~> 1.16.0'
   gem 'guard-rspec'
   gem 'timecop'
   gem 'sinatra'
