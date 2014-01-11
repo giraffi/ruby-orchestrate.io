@@ -33,9 +33,6 @@ require 'webmock/rspec'
 require 'json'
 require 'timecop'
 
-# Keep the client from external requests.
-WebMock.disable_net_connect!(allow_localhost: true, allow: /codeclimate.com/)
-
 # Use Webmock to route all requests to our Sinatra application `PseudoOrchestrateIo`.
 require_relative 'support/pseudo_orchestrate.io'
 
